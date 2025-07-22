@@ -6,10 +6,6 @@ const ParametersSchema = new Schema(
             type: String,
             required: true,
         },
-        blockQuantity: {
-            type: String,
-            required: true,
-        },
         liveLeaderboard: {
             type: Boolean,
             required: true,

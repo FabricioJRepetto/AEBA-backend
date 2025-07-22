@@ -1,32 +1,10 @@
 import { Schema, model } from "mongoose";
 
-const CompetitionSchema = new Schema(
+const BlocksSchema = new Schema(
     {
-        name: {
-            type: String,
-            lowercase: true,
-            required: true,
-        },
-        location: {
-            type: String,
-            lowercase: true,
-            required: true,
-        },
-        date: {
-            type: String,
-            required: true,
-        },
-        duration: {
-            type: Number,
-            required: true,
-        },
-        overtime: {
-            type: Number,
-            default: 0,
-        },
-        category: {
-            type: String,
-            lowercase: true,
+        competitionId: {
+            type: Schema.Types.ObjectId,
+            ref: "Competition",
             required: true,
         },
         blocksTemplate: [
@@ -59,14 +37,6 @@ const CompetitionSchema = new Schema(
                     type: Boolean,
                     default: false,
                 },
-                _id: false,
-            },
-        ],
-        competitors: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Competitor",
-                required: true,
             },
         ],
     },
@@ -78,5 +48,5 @@ const CompetitionSchema = new Schema(
     }
 );
 
-const Competition = model("Competition", CompetitionSchema);
-export default Competition;
+const Blocks = model("Blocks", BlocksSchema);
+export default Blocks;

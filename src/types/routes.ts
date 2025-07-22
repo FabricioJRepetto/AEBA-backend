@@ -5,7 +5,8 @@ enum Routes {
     Admin = "/admin",
 }
 enum BaseRoutes {
-    Competition = "/competition",
+    GetCompetition = "/getCompetition",
+    Competitions = "/competitions",
     LeaderBoard = "/leaderboard",
     Parameters = "/parameters",
 }
@@ -19,9 +20,17 @@ enum StaffRoutes {
     RateSpecialBlock = "/rateSpecialBlock",
 }
 enum AdminRoutes {
+    // Users
     GetUsers = "/getUsers",
-    ManageUser = "/manageUser",
-    ManageCompetition = "/manageCompetition",
+    CreateUser = "/createUser",
+    UpdateUser = "/updateUser",
+    DeleteUser = "/deleteUser",
+
+    // Competitions
+    CreateCompetition = "/createCompetition",
+    UpdateCompetition = "/updateCompetition",
+    DeleteCompetition = "/deleteCompetition",
+    CompetitionOvertime = "/competitionOvertime",
 }
 
 export { Routes, BaseRoutes, UserRoutes, StaffRoutes, AdminRoutes };

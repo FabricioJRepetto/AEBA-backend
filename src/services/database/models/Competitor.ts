@@ -1,36 +1,30 @@
 import { Schema, model } from "mongoose";
 
-const CompetitionSchema = new Schema(
+const CompetitorSchema = new Schema(
     {
         name: {
             type: String,
             lowercase: true,
             required: true,
         },
-        location: {
+        dni: {
             type: String,
             lowercase: true,
             required: true,
+            unique: true,
         },
-        date: {
-            type: String,
+        competitionId: {
+            type: Schema.Types.ObjectId,
+            ref: "Competition",
             required: true,
         },
-        duration: {
-            type: Number,
-            required: true,
-        },
-        overtime: {
-            type: Number,
-            default: 0,
-        },
-        category: {
-            type: String,
-            lowercase: true,
-            required: true,
-        },
-        blocksTemplate: [
+        blocks: [
             {
+                competitionId: {
+                    type: Schema.Types.ObjectId,
+                    ref: "Competition",
+                    required: true,
+                },
                 number: {
                     type: Number,
                     required: true,
@@ -59,16 +53,12 @@ const CompetitionSchema = new Schema(
                     type: Boolean,
                     default: false,
                 },
-                _id: false,
             },
         ],
-        competitors: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Competitor",
-                required: true,
-            },
-        ],
+        score: {
+            type: Number,
+            default: 0,
+        },
     },
     {
         versionKey: false,
@@ -78,5 +68,14 @@ const CompetitionSchema = new Schema(
     }
 );
 
-const Competition = model("Competition", CompetitionSchema);
-export default Competition;
+CompetitorSchema.virtual("score").get(function () {
+    let score = 0;
+    this.blocks.forEach(b => {
+        // TODO: Implementar lógica de puntuación (preguntar a Majo)
+        if (b.top) score += b.score - b.attempts;
+    });
+    return score;
+});
+
+const Competitor = model("Competitor", CompetitorSchema);
+export default Competitor;

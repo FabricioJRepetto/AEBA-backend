@@ -19,6 +19,6 @@ app.use(generalErrorHandler);
 
 connectDB().then(() => {
     app.listen(PORT, () => {
-        console.log(`✅ Server ready! Listening on: http://localhost:${PORT}`);
+        console.log(`✅ Server ready! -------------- Listening on: http://localhost:${PORT}`);
     });
 });
