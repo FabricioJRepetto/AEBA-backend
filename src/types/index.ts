@@ -10,6 +10,7 @@ type Block = {
 };
 
 type Competition = {
+    _id: string;
     name: string;
     location: string;
     date: string;
@@ -26,4 +27,12 @@ type Competitor = {
     competitionId: string;
     blocks: Block[];
     score: number;
+};
+
+type AppParameters = {
+    blockScore: string;
+    /** Necesaria para el logueo por QR */
+    passphrase: string;
+    liveLeaderboard: boolean;
+    leaderboardRefreshRate: number;
 };

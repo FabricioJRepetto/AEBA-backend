@@ -8,9 +8,10 @@ enum BaseRoutes {
     GetCompetition = "/getCompetition",
     Competitions = "/competitions",
     LeaderBoard = "/leaderboard",
-    Parameters = "/parameters",
+    GetParameters = "/getParameters",
 }
 enum UserRoutes {
+    Validate = "/validate",
     Signin = "/signin",
     Login = "/login",
     AutoLogin = "/autologin",
@@ -31,6 +32,15 @@ enum AdminRoutes {
     UpdateCompetition = "/updateCompetition",
     DeleteCompetition = "/deleteCompetition",
     CompetitionOvertime = "/competitionOvertime",
+
+    // Parameters
+    UpdateParameters = "/updateParameters",
+
+    // Registers
+    GetRegistries = "/getRegisters",
+    CreateRegistry = "/createRegister",
+    UpdateRegistry = "/updateRegister",
+    DeleteRegistry = "/deleteRegister",
 }
 
 export { Routes, BaseRoutes, UserRoutes, StaffRoutes, AdminRoutes };

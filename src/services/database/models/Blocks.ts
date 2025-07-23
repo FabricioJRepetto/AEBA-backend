@@ -48,5 +48,6 @@ const BlocksSchema = new Schema(
     }
 );
 
+/** @deprecated */
 const Blocks = model("Blocks", BlocksSchema);
 export default Blocks;

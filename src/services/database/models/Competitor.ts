@@ -13,11 +13,13 @@ const CompetitorSchema = new Schema(
             required: true,
             unique: true,
         },
-        competitionId: {
-            type: Schema.Types.ObjectId,
-            ref: "Competition",
-            required: true,
-        },
+        competitions: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Competition",
+                required: true,
+            },
+        ],
         blocks: [
             {
                 competitionId: {
@@ -55,10 +57,10 @@ const CompetitorSchema = new Schema(
                 },
             },
         ],
-        score: {
-            type: Number,
-            default: 0,
-        },
+        // score: {
+        //     type: Number,
+        //     default: 0,
+        // },
     },
     {
         versionKey: false,

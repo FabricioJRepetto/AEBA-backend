@@ -2,17 +2,23 @@ import { Schema, model } from "mongoose";
 
 const ParametersSchema = new Schema(
     {
-        blockScore: {
-            type: String,
-            required: true,
-        },
-        liveLeaderboard: {
-            type: Boolean,
-            required: true,
-        },
-        leaderboardRefreshRate: {
-            type: Number,
-            required: true,
+        parameters: {
+            blockScore: {
+                type: String,
+                required: true,
+            },
+            passphrase: {
+                type: String,
+                required: true,
+            },
+            liveLeaderboard: {
+                type: Boolean,
+                required: true,
+            },
+            leaderboardRefreshRate: {
+                type: Number,
+                required: true,
+            },
         },
     },
     {
