@@ -3,10 +3,20 @@ import bcrypt from "bcrypt";
 
 const UserSchema = new Schema(
     {
-        user_name: {
+        nick_name: {
             type: String,
             lowercase: true,
             unique: true,
+            required: true,
+        },
+        first_name: {
+            type: String,
+            lowercase: true,
+            required: true,
+        },
+        last_name: {
+            type: String,
+            lowercase: true,
             required: true,
         },
         approved: {
@@ -20,14 +30,15 @@ const UserSchema = new Schema(
             required: true,
             unique: true,
         },
-        password: {
+        password_hash: {
             type: String,
             required: true,
         },
-        role: { type: String },
+        role: [{ type: String }],
     },
     {
         versionKey: false,
+        timestamps: true,
         toJSON: { getters: true, virtuals: true },
         toObject: { getters: true, virtuals: true },
     }
@@ -35,16 +46,16 @@ const UserSchema = new Schema(
 
 UserSchema.pre("save", async function (next) {
     const user = this;
-    if (!user.isModified("password")) return next();
+    if (!user.isModified("password_hash")) return next();
 
-    const hash = await bcrypt.hash(user.password, 10);
-    user.password = hash;
+    const hash = await bcrypt.hash(user.password_hash, 10);
+    user.password_hash = hash;
     next();
 });
 
 UserSchema.methods.comparePassword = async function (candidatePassword: string | Buffer): Promise<boolean> {
     const user = this;
-    const compare = await bcrypt.compare(candidatePassword, user.password);
+    const compare = await bcrypt.compare(candidatePassword, user.password_hash);
     return compare;
 };
 

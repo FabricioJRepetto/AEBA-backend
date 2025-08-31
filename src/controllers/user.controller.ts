@@ -5,21 +5,6 @@ import Registry from "../services/database/models/Registry";
 import Competitor from "../services/database/models/Competitor";
 import Competition from "../services/database/models/Competition";
 
-const validatePassphrase = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    try {
-        const { passphrase } = req.query;
-        if (!passphrase) return res.status(400).send("Passphrase is required");
-        // TODO: Desencriptar la passphrase y compararla con la almacenada
-        const p = await Parameters.findOne({});
-        if (!p?.parameters) return res.status(404).send("Parameters not found");
-        if (p.parameters.passphrase !== passphrase) return res.status(401).send("Invalid passphrase");
-        res.status(200).send("Passphrase is valid");
-    } catch (error) {
-        console.error("Error during validate:", error);
-        next(error);
-    }
-};
-
 const signin = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
         const { dni } = req.body;
@@ -95,6 +80,22 @@ const updateBlock = async (req: Request, res: Response, next: NextFunction): Pro
         res.status(200).json(updatedCompetitor);
     } catch (error) {
         console.error("Error during updateBlock:", error);
+        next(error);
+    }
+};
+
+/** @deprecated TORNEOS - WIP */
+const validatePassphrase = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    try {
+        const { passphrase } = req.query;
+        if (!passphrase) return res.status(400).send("Passphrase is required");
+        // TODO: Desencriptar la passphrase y compararla con la almacenada
+        const p = await Parameters.findOne({});
+        if (!p?.parameters) return res.status(404).send("Parameters not found");
+        if (p.parameters.passphrase !== passphrase) return res.status(401).send("Invalid passphrase");
+        res.status(200).send("Passphrase is valid");
+    } catch (error) {
+        console.error("Error during validate:", error);
         next(error);
     }
 };

@@ -5,17 +5,27 @@ enum Routes {
     Admin = "/admin",
 }
 enum BaseRoutes {
-    GetCompetition = "/getCompetition",
-    Competitions = "/competitions",
     LeaderBoard = "/leaderboard",
     GetParameters = "/getParameters",
+
+    //_____ TORNEOS _ WIP _____
+
+    /** @deprecated TORNEOS - WIP */
+    GetCompetition = "/getCompetition",
+    /** @deprecated TORNEOS - WIP */
+    Competitions = "/competitions",
 }
 enum UserRoutes {
-    Validate = "/validate",
     Signin = "/signin",
     Login = "/login",
     AutoLogin = "/autologin",
     UpdateBlock = "/updateBlock",
+
+    //_____ TORNEOS _ WIP _____
+
+    /** @deprecated TORNEOS - WIP */
+    /** @deprecated TORNEOS - WIP */
+    Validate = "/validate",
 }
 enum StaffRoutes {
     RateSpecialBlock = "/rateSpecialBlock",
@@ -27,19 +37,29 @@ enum AdminRoutes {
     UpdateUser = "/updateUser",
     DeleteUser = "/deleteUser",
 
-    // Competitions
-    CreateCompetition = "/createCompetition",
-    UpdateCompetition = "/updateCompetition",
-    DeleteCompetition = "/deleteCompetition",
-    CompetitionOvertime = "/competitionOvertime",
-
     // Parameters
     UpdateParameters = "/updateParameters",
 
+    //_____ TORNEOS _ WIP _____
+
+    // Competitions
+    /** @deprecated TORNEOS - WIP */
+    CreateCompetition = "/createCompetition",
+    /** @deprecated TORNEOS - WIP */
+    UpdateCompetition = "/updateCompetition",
+    /** @deprecated TORNEOS - WIP */
+    DeleteCompetition = "/deleteCompetition",
+    /** @deprecated TORNEOS - WIP */
+    CompetitionOvertime = "/competitionOvertime",
+
     // Registers
+    /** @deprecated TORNEOS - WIP */
     GetRegistries = "/getRegisters",
+    /** @deprecated TORNEOS - WIP */
     CreateRegistry = "/createRegister",
+    /** @deprecated TORNEOS - WIP */
     UpdateRegistry = "/updateRegister",
+    /** @deprecated TORNEOS - WIP */
     DeleteRegistry = "/deleteRegister",
 }
 
